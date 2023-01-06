@@ -11,3 +11,5 @@ typedef struct node {
 Node *Node_alloc(int data, Node *next);
 void Node_free(Node *node);
 void delete_node_cmd(pnode *head);
+void insert_node_cmd(pnode *head);
+pnode getNode(int id, pnode *head);

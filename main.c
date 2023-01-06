@@ -43,13 +43,13 @@ int main()
             //printf("\nend A func\n");
 
         }
-    //     if (function == 'B')
-    //     {
-    //         //printf("\nstart B FUNC\n");
-    //         insert_node_cmd(head);
-    //         //print_graph(*head);
-    //         continue;
-    //     }
+        if (function == 'B')
+        {
+            //printf("\nstart B FUNC\n");
+            insert_node_cmd(head);
+            //print_graph(*head);
+            continue;
+        }
     //     if (function == 'D')
     //     {
     //         // printf("\nstart D FUNC\n");
