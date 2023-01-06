@@ -18,7 +18,7 @@ int main()
         if (function == 'A')
         {
             //if the graph exsites- delete it
-            delete_graph_cmd(head);
+            deleteGraph_cmd(head);
             // printf("enter num of verticals:\n");
             scanf("%d", &numOfNodes);
             *head = build_graph_cmd(numOfNodes);
@@ -50,22 +50,22 @@ int main()
             //print_graph(*head);
             continue;
         }
-    //     if (function == 'D')
-    //     {
-    //         // printf("\nstart D FUNC\n");
-    //         delete_node_cmd(head);
-    //         // print_graph(*head);
-    //         continue;
-    //     }
-    //     if (function == 'S')
-    //     {
-    //         // printf("\nstart S FUNC\n");
-    //         int src = -1, dest = -1;
-    //         scanf("%d %d", &src, &dest);
-    //         int dis = shortsPath_cmd(*head, src, dest);
-    //         printf("Dijsktra shortest path: %d \n", dis);
-    //         //print_graph(*head);
-    //     }
+        if (function == 'D')
+        {
+            // printf("\nstart D FUNC\n");
+            delete_node_cmd(head);
+            // print_graph(*head);
+            continue;
+        }
+        if (function == 'S')
+        {
+            // printf("\nstart S FUNC\n");
+            int src = -1, dest = -1;
+            scanf("%d %d", &src, &dest);
+            int dis = shortsPath_cmd(*head, src, dest);
+            printf("Dijsktra shortest path: %d \n", dis);
+            //print_graph(*head);
+        }
     //     if (function == 'T')
     //     {
     //         // printf("\nstart T FUNC\n");
@@ -74,6 +74,6 @@ int main()
     //         continue;
     //     }
     // }
-    delete_graph_cmd(head);
+    deleteGraph_cmd(head);
     return 0;
 }

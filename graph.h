@@ -19,7 +19,7 @@ typedef struct GRAPH_NODE_ {
 pnode build_graph_cmd(int numOfNodes);
 void printGraph_cmd(pnode head); //for self debug
 void deleteGraph_cmd(pnode *head);
-void shortsPath_cmd(pnode head);
+
 void TSP_cmd(pnode head);
 
 #endif
