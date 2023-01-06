@@ -3,27 +3,9 @@
 #include <ctype.h>
 #include "graph.h"
 
-void delete_node_cmd(pnode *head){
-    pnode tempNode = head;
 
-    while (temp != NULL)
-    {
-        pedege tempEdege= tempNode -> edges;
-        while (tempEdge != NULL)
-        {
-            pedge tempEdegeFree = tempEdege;
-            tempEdege = tempEdege-> next;
-            free(tempEdegeFree);
-        }
 
-        node *tempFree = tempNode;
-        tempNode = tempNode->next;
-        free(tempFree);
-    }
-    free(tempNode);
-}
-
-void build_graph_cmd(int numOfNodes){
+pnode build_graph_cmd(int numOfNodes){
     node *head = NULL;
     pnode newNode , tmpNode = NULL;
     int i;
@@ -78,4 +60,24 @@ void printGraph_cmd(pnode head){//for self debug
         printf("\n");
     }
     
+}
+
+void deleteGraph_cmd(pnode *head){
+    pnode tmpNode = *head;
+
+    while (tmpNode != NULL)
+    {
+        pedge nodeEdge = tmpNode -> edges;
+        while (nodeEdge =! NULL)
+        {
+            pedge freeEdge = nodeEdge;
+            nodeEdge = nodeEdge->next; 
+            free(freeEdge);
+        }
+
+        pnode freeNode = tmpNode;
+        tmpNode = tmpNode -> next;
+        free(freeNode); 
+    }
+    free(tmpNode);
 }

@@ -2,6 +2,7 @@
 #include "algo.h"
 #include "edges.h"
 #include "nodes.h"
+#include "graph.h"
 
 int main()
 {
@@ -24,24 +25,24 @@ int main()
 
             scanf("%c", &c); //space
 
-    //          while (scanf("%c", &c) != NULL) //0
-    //         {
-    //             if (c == 'n')
-    //             {
-    //                 scanf("%d", &src);
-    //                 insert_node_funcA_cmd(head, src);
-    //             }
-    //             else
-    //             {
-    //                 break;
-    //             }
-    //         }
-    //         //print_graph(*head);
-    //         function = c;
+             while (scanf("%c", &c) != NULL) //0
+            {
+                if (c == 'n')
+                {
+                    scanf("%d", &src);
+                    insert_node_funcA_cmd(head, src);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            //print_graph(*head);
+            function = c;
 
-    //         //printf("\nend A func\n");
+            //printf("\nend A func\n");
 
-    //     }
+        }
     //     if (function == 'B')
     //     {
     //         //printf("\nstart B FUNC\n");
