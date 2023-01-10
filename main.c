@@ -22,7 +22,7 @@ int main()
 
             scanf("%c", &c); //space
 
-             while (scanf("%c", &c) != NULL) //0
+             while (scanf("%c", &c) != 0) //0
             {
                 if (c == 'n')
                 {

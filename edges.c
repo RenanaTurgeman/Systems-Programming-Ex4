@@ -31,7 +31,6 @@ void add_edge(pnode newNode, int dest, int weight, pnode *head)
         if (nodeEdges->next == NULL)
         {
             perror("malloc didnt work");
-            return 0;
         }
         nodeEdges->next->next = NULL;
         nodeEdges->next->weight = weight;
@@ -56,5 +55,50 @@ void free_edges(pnode tmpNode)
     }
     else{
         free(tmpNode->edges);
+    }
+}
+
+void delete_edge(pnode *head, int nodeId)
+{
+    pnode tempNode = *head;
+
+    while (tempNode != NULL)
+    {
+        if (tempNode->node_num != nodeId && tempNode->edges != NULL)
+        {
+
+            if (tempNode->edges->endpoint->node_num != nodeId)
+            {
+                pedge tempEdge = tempNode->edges;
+
+                while (tempEdge->next != NULL)
+                {
+                    if (tempEdge->next->endpoint->node_num == nodeId)
+                    {
+                        pedge pe = tempEdge->next;
+                        tempEdge->next = tempEdge->next->next;
+                        free(pe);
+                        break;
+                    }
+                    tempEdge = tempEdge->next;
+                }
+            }
+            else
+            {
+                if (tempNode->edges->next == NULL)
+                {
+                    pedge pe = tempNode->edges;
+                    tempNode->edges = NULL;
+                    free(pe);
+                }
+                else
+                {
+                    pedge pe = tempNode->edges;
+                    tempNode->edges = pe->next;
+                    free(pe);
+                }
+            }
+        }
+        tempNode = tempNode->next;
     }
 }

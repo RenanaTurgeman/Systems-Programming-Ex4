@@ -7,78 +7,81 @@ int char_to_int(char c) {
     return c - '0';
 }
 
-void delete_node_cmd(pnode *head){
-    pnode tempNode = head;
-
-    while (tempNode != NULL)
+void delete_node_cmd(pnode *head)
+{
+    int id = 0;
+    scanf("%d", &id);
+    delete_edge(head, id);
+    pnode tempNode = *head;
+    node *pNode = NULL;
+    if (tempNode->node_num != id)
     {
-        pedge tempEdge= tempNode -> edges;
-        while (tempEdge != NULL)
+        while (tempNode->next->node_num != id)
         {
-            pedge tempEdgeFree = tempEdge;
-            tempEdge = tempEdge-> next;
-            free(tempEdgeFree);
+            tempNode = tempNode->next;
         }
-
-        node *tempFree = tempNode;
-        tempNode = tempNode->next;
-        free(tempFree);
+        pNode = tempNode->next;
+        tempNode->next = tempNode->next->next;
+        free_edges(pNode);
+        free(pNode);
     }
-    free(tempNode);
+    else
+    {
+        pNode = *head;
+        *head = pNode->next;
+        free_edges(pNode);
+        free(pNode);
+    }
 }
-
-void insert_node_cmd(pnode *head){
-   
+void insert_node_cmd(pnode *head)
+{
     int src;
     scanf("%d", &src);
-    int dest,weight;
-    //check if the node is exsits
-    pnode tmpNode = getNode(src,head);
-
-    if(tmpNode == NULL){ //the node not exsists
-        pnode nodeInGraph = *head;
-        while (nodeInGraph -> next != NULL)
+    int dest;
+    int weight;
+    pnode temp = getNode(src, head);
+    if (temp == NULL)
+    {
+        pnode pGraphNode = *head;
+        while (pGraphNode->next != NULL)
         {
-             nodeInGraph = nodeInGraph -> next;
+            pGraphNode = pGraphNode->next;
         }
-
-        pnode newNode = (pnode)malloc(sizeof(node));
+        pnode newNode = (pnode)(malloc(sizeof(node)));
         if (newNode == NULL)
         {
             perror("malloc didnt work");
-            return 0;
+            exit(0);
         }
-
-        nodeInGraph -> next = newNode;
-        newNode-> next =NULL;
-        newNode -> edges = NULL; 
-        newNode -> node_num = src;     
-
-        //now define the edges (dest,wieght)
-        while (scanf("%d",&dest) != 0 && scanf("%d", &weight) != 0)
+        newNode->node_num = src;
+        newNode->edges = NULL;
+        newNode->next = NULL;
+        pGraphNode->next = newNode;
+        //printf("enter dest and weight:\n");
+        while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
         {
-             if (isalpha(dest) || isalpha(weight)) //checks if a given character is an alphabetic character.
+            if (isalpha(dest) || isalpha(weight))
             {
                 break;
             }
             add_edge(newNode, dest, weight, head);
-        } 
+        }
     }
-    else{ //node exsits - tmpNode is the new node
-        free_edges(tmpNode);
-        tmpNode->edges = NULL;
-        //now define the new edges (dest,wieght)
-        while (scanf("%d",&dest) != 0 && scanf("%d", &weight) != 0)
+    else
+    {
+        free_edges(temp);
+        temp->edges = NULL;
+        //printf("enter dest and weight:\n");
+        while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
         {
-             if (isalpha(dest) || isalpha(weight)) //checks if a given character is an alphabetic character.
+            if (isalpha(dest) || isalpha(weight))
             {
                 break;
             }
-            add_edge(tmpNode, dest, weight, head);
-        } 
+            add_edge(temp, dest, weight, head);
+        }
     }
 }
-
 pnode getNode(int id, pnode *head){
 
     pnode check = *head;
@@ -92,4 +95,19 @@ pnode getNode(int id, pnode *head){
         check = check -> next;
     }
     return NULL;
+}
+void insert_node_funcA_cmd(pnode *head, int src)
+{
+
+    int dest;
+    int weight;
+    pnode temp = getNode(src, head);
+    while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
+    {
+        if (isalpha(dest) || isalpha(weight))
+        {
+            break;
+        }
+        add_edge(temp, dest, weight, head);
+    }
 }

@@ -21,7 +21,7 @@ pnode build_graph_cmd(int numOfNodes){
 
     tmpNode = head;
 
-    for (int i = 1; i < numOfNodes; i++)
+    for (i = 1; i < numOfNodes; i++)
     {
         newNode = (pnode)malloc(sizeof(node));
         if (newNode == NULL)
@@ -40,44 +40,35 @@ pnode build_graph_cmd(int numOfNodes){
 }
 
 void printGraph_cmd(pnode head){//for self debug
-    pnode tmpNode = head;
-
-    while (tmpNode =! NULL)
+    pnode tempNode = head;
+    while (tempNode != NULL)
     {
-        int num= tmpNode->node_num;
-        printf("Node: %d ", num);
-
-        pedge edge = tmpNode -> edges;
-        while (edge != NULL)
+        printf("Node: %d {", tempNode->node_num);
+        pedge tempEdge = tempNode->edges;
+        while (tempEdge != NULL)
         {
-            pnode dest = edge -> endpoint ->node_num;
-            int weight= edge ->weight;
-            printf("Dest: %d , Weight: %d ", dest, weight);
-            edge = edge->next;
+            printf("dest: %d weight: %d ", tempEdge->endpoint->node_num, tempEdge->weight);
+            tempEdge = tempEdge->next;
         }
-
-        tmpNode = tmpNode ->next;
-        printf("\n");
+        printf("}");
+        tempNode = tempNode->next;
     }
-    
 }
 
 void deleteGraph_cmd(pnode *head){
-    pnode tmpNode = *head;
-
-    while (tmpNode != NULL)
+    pnode tempNode = *head;
+    while (tempNode != NULL)
     {
-        pedge nodeEdge = tmpNode -> edges;
-        while (nodeEdge =! NULL)
+        pedge tempEdge = tempNode->edges;
+        while (tempEdge != NULL)
         {
-            pedge freeEdge = nodeEdge;
-            nodeEdge = nodeEdge->next; 
-            free(freeEdge);
+            pedge tempEdgefree = tempEdge;
+            tempEdge = tempEdge->next;
+            free(tempEdgefree);
         }
-
-        pnode freeNode = tmpNode;
-        tmpNode = tmpNode -> next;
-        free(freeNode); 
+        node *tempFree = tempNode;
+        tempNode = tempNode->next;
+        free(tempFree);
     }
-    free(tmpNode);
+    free(tempNode);
 }

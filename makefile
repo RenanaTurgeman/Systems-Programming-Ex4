@@ -1,4 +1,3 @@
-.PHONY = all clean
 CC=gcc
 OBJ=nodes.o edges.o algo.o graph.o main.o graph.h
 NAME = main
@@ -17,6 +16,8 @@ algo.o: algo.c graph.h
 	$(CC) $(CFLAGS) -c algo.c
 main.o: main.c graph.h
 	$(CC) $(CFLAGS) -c main.c
+
+.PHONY = clean all 
 
 clean:
 	rm -f *.o *.a *.txt graph

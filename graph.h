@@ -52,6 +52,8 @@ void delete_node_cmd(pnode *head);
 void insert_node_cmd(pnode *head);
 pnode getNode(int id, pnode *head);
 
+void delete_edge(pnode *head, int nodeId);
+void insert_node_funcA_cmd(pnode *head, int src);
 
 
 #endif

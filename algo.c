@@ -113,31 +113,12 @@ void deep_copy(int *fromArr, int *toArr, int arrLenght)
         toArr[i] = fromArr[i];
     }
 }
-
 void swap(int *arr, int i, int j)
 {
     int temp = arr[i];
     arr[i] = arr[j];
     arr[j] = temp;
 }
-
-void permotion(int start, int *arr, int arrLength)
-{
-    if (start == arrLength - 1)
-    {
-        calcPermot(arr, arrLength);
-        return;
-    }
-    for (int i = start; i < arrLength; ++i)
-    {
-        int *arrCopy = (int *)(calloc(arrLength, sizeof(int)));
-        deep_copy(arr, arrCopy, arrLength);
-        swap(arrCopy, start, i);
-        permotion(start + 1, arrCopy, arrLength);
-        free(arrCopy);
-    }
-}
-
 void calcPermot(int *arr, int arrLength)
 {
     int tempWeight = 0;
@@ -156,9 +137,25 @@ void calcPermot(int *arr, int arrLength)
         weight = tempWeight;
     }
 }
-
-void TSP_cmd(pnode head){
-    weight = INFINITY;
+void permotion(int start, int *arr, int arrLength)
+{
+    if (start == arrLength - 1)
+    {
+        calcPermot(arr, arrLength);
+        return;
+    }
+    for (int i = start; i < arrLength; ++i)
+    {
+        int *arrCopy = (int *)(calloc(arrLength, sizeof(int)));
+        deep_copy(arr, arrCopy, arrLength);
+        swap(arrCopy, start, i);
+        permotion(start + 1, arrCopy, arrLength);
+        free(arrCopy);
+    }
+}
+void TSP_cmd(pnode head)
+{
+	weight = INFINITY;
 	arrlenth = -1;
     graph = head;
     scanf("%d", &arrlenth);
