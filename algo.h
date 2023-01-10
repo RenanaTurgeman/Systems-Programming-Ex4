@@ -8,3 +8,4 @@ typedef struct Dijkstra {
 } dijkstra, *pdijkstra;
 
 int shortsPath_cmd(pnode head, int src , int dest);
+void TSP_cmd(pnode head);

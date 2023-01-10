@@ -66,14 +66,14 @@ int main()
             printf("Dijsktra shortest path: %d \n", dis);
             //print_graph(*head);
         }
-    //     if (function == 'T')
-    //     {
-    //         // printf("\nstart T FUNC\n");
-    //         TSP_cmd(*head);
-    //         // print_graph(*head);
-    //         continue;
-    //     }
-    // }
+        if (function == 'T')
+        {
+            // printf("\nstart T FUNC\n");
+            TSP_cmd(*head);
+            // print_graph(*head);
+            continue;
+        }
+    }
     deleteGraph_cmd(head);
     return 0;
 }
