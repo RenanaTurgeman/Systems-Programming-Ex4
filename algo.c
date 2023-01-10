@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "graph.h"
-#include "algo.h"
 //****TSP****//
 int weight;
 int arrlenth;

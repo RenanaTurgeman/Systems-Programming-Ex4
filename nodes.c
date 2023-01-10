@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "nodes.h"
-#include "edges.h"
 
 int char_to_int(char c) {
     return c - '0';
