@@ -1,7 +1,4 @@
 #include <stdio.h>
-#include "algo.h"
-#include "edges.h"
-#include "nodes.h"
 #include "graph.h"
 
 int main()
