@@ -57,7 +57,6 @@ void insert_node_cmd(pnode *head)
         newNode->edges = NULL;
         newNode->next = NULL;
         pGraphNode->next = newNode;
-        //printf("enter dest and weight:\n");
         while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
         {
             if (isalpha(dest) || isalpha(weight))
@@ -71,7 +70,6 @@ void insert_node_cmd(pnode *head)
     {
         free_edges(temp);
         temp->edges = NULL;
-        //printf("enter dest and weight:\n");
         while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
         {
             if (isalpha(dest) || isalpha(weight))
@@ -96,7 +94,7 @@ pnode getNode(int id, pnode *head){
     }
     return NULL;
 }
-void insert_node_funcA_cmd(pnode *head, int src)
+void insertNodeToGraph(pnode *head, int src)
 {
 
     int dest;

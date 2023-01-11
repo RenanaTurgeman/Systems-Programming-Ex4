@@ -9,7 +9,7 @@ pnode graph;
 ///Dijkstra
 pdijkstra buildDijkstra(pnode start, int src){
     pdijkstra head = NULL;
-    pdijkstra *index = &head; //what it is main?
+    pdijkstra *index = &head; 
  while (start != NULL)
     {
         (*index) = (pdijkstra)malloc(sizeof(dijkstra));
@@ -164,18 +164,10 @@ void TSP_cmd(pnode head)
     {
         scanf("%d", &arr[i]);
     }
-    // for (int i = 0; i < arrlenth; ++i)
-    // {
-    //      printf("%d , ", arr[i]);
-    // }
-    // printf("\n");
+    
     int *arrCopy = (int *)(calloc(arrlenth, sizeof(int)));
     deep_copy(arr, arrCopy, arrlenth);
-    // for (int i = 0; i < arrlenth; ++i)
-    // {
-    //     printf("%d , ", arr[i]);
-    // }
-    // printf("\n");
+   
     permotion(0, arrCopy, arrlenth);
     free(arr);
     free(arrCopy);

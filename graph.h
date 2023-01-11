@@ -42,18 +42,13 @@ void TSP_cmd(pnode head);
 void add_edge(pnode newNode, int dest, int weight, pnode *head);
 void free_edges(pnode tmpNode);
 
-void createNewNode();
-void deleteNode(int);
 int char_to_int(char);
 
-Node *Node_alloc(int data, Node *next);
-void Node_free(Node *node);
 void delete_node_cmd(pnode *head);
 void insert_node_cmd(pnode *head);
 pnode getNode(int id, pnode *head);
 
 void delete_edge(pnode *head, int nodeId);
-void insert_node_funcA_cmd(pnode *head, int src);
-
+void insertNodeToGraph(pnode *head, int src);
 
 #endif
